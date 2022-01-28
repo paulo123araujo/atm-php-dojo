@@ -2,7 +2,7 @@
 
 namespace ATM;
 
-use ATM\Balance;
+use ATM\{Balance, Withdraw};
 
 class User
 {
@@ -18,8 +18,8 @@ class User
         return $this->balance->value();
     }
 
-    public function withdraw(int|float $value): void
+    public function withdraw(Withdraw $withdraw): void
     {
-        $this->balance = Balance::init($this->balance->value() - $value);
+        $this->balance = Balance::init($this->balance->value() - $withdraw->value());
     }
 }

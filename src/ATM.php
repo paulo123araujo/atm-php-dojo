@@ -3,6 +3,7 @@
 namespace ATM;
 
 use ATM\BalanceException;
+use ATM\Withdraw;
 
 class ATM
 {
@@ -12,25 +13,25 @@ class ATM
     {
     }
 
-    public function withdraw($value): string
+    public function withdraw(Withdraw $withdraw): string
     {
-        if ($this->isNotMultipleOfFive($value)) {
+        if ($this->isNotMultipleOfFive($withdraw->value())) {
             throw new BalanceException('Is not five multiple');
         }
 
-        $this->user->withdraw($value);
+        $this->user->withdraw($withdraw);
         $this->taxFromUserBalance();
 
         return number_format($this->user->currentBalance(), 2);
     }
 
-    private function isNotMultipleOfFive(int $value): bool
+    private function isNotMultipleOfFive(int|float $value): bool
     {
         return $value % 5 !== 0;
     }
 
     private function taxFromUserBalance(): void
     {
-        $this->user->withdraw(ATM::TAX);
+        $this->user->withdraw(Withdraw::init(ATM::TAX));
     }
 }

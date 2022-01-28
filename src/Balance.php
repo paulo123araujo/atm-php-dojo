@@ -2,6 +2,8 @@
 
 namespace ATM;
 
+use ATM\BalanceException;
+
 class Balance
 {
     private function __construct(private int|float $balance)
@@ -17,7 +19,11 @@ class Balance
     private function validate(): void
     {
         if ($this->balance < 0) {
-            throw new \Exception('Balance should be greater than zero');
+            throw new BalanceException('Balance should be greater than zero');
+        }
+
+        if ($this->balance > 2000) {
+            throw new BalanceException('Balance should be equal or lower than 2000');
         }
     }
 
