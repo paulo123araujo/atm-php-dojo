@@ -19,7 +19,7 @@ class ATM
             throw new BalanceException('Is not five multiple');
         }
 
-        $this->user->withdraw($withdraw->value());
+        $this->user->withdraw($withdraw);
         $this->taxFromUserBalance();
 
         return number_format($this->user->currentBalance(), 2);
@@ -32,6 +32,6 @@ class ATM
 
     private function taxFromUserBalance(): void
     {
-        $this->user->withdraw(ATM::TAX);
+        $this->user->withdraw(Withdraw::init(ATM::TAX));
     }
 }
