@@ -28,7 +28,7 @@ class UserTest extends TestCase
 
         $withdrawValue = 100;
         $user->withdraw(Withdraw::init($withdrawValue));
-        
+
         $this->assertEquals(900, $user->currentBalance());
     }
 }

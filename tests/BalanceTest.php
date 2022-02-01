@@ -28,7 +28,7 @@ class BalanceTest extends TestCase
     }
 
     /** @test */
-    public function shouldCreateBalance() 
+    public function shouldCreateBalance()
     {
         $initialValue = 1;
         $balance = Balance::init($initialValue);

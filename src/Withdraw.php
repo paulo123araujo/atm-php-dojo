@@ -6,7 +6,7 @@ use ATM\WithdrawException;
 
 class Withdraw
 {
-    private function __construct(private int|float $withdraw) 
+    private function __construct(private int|float $withdraw)
     {
         $this->validate();
     }

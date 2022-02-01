@@ -8,7 +8,7 @@ use ATM\{ATM, Balance, BalanceException, Withdraw, WithdrawException, User};
 class ATMTest extends TestCase
 {
     /**
-     * @return array<ATM,User>
+     * @return array{ATM,User}
      */
     private function createATMAndUserInstances(Balance $balance): array
     {
